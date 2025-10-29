@@ -1,3 +1,75 @@
-[gd_scene format=3 uid="uid://bfgcgilglokdo"]
+[gd_scene load_steps=8 format=3 uid="uid://bfgcgilglokdo"]
+
+[ext_resource type="Texture2D" uid="uid://dg8htipvv7wmh" path="res://characters-Sheet.png" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://drm7bagll3bq6" path="res://bounce.gd" id="1_fj7yv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fj7yv"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gv5m4"]
+size = Vector2(640, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3sb7"]
+size = Vector2(20, 396.5)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tlwt5"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
+size = Vector2(28, 19)
 
 [node name="World" type="Node2D"]
+
+[node name="wall_bottom" type="StaticBody2D" parent="."]
+position = Vector2(10, 658)
+physics_material_override = SubResource("PhysicsMaterial_fj7yv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_bottom"]
+position = Vector2(310, -288)
+shape = SubResource("RectangleShape2D_gv5m4")
+
+[node name="wall_top" type="StaticBody2D" parent="."]
+position = Vector2(-246, -10)
+physics_material_override = SubResource("PhysicsMaterial_fj7yv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_top"]
+position = Vector2(566, 0)
+shape = SubResource("RectangleShape2D_gv5m4")
+
+[node name="wall_L" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_fj7yv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_L"]
+position = Vector2(-10, 180.75)
+shape = SubResource("RectangleShape2D_f3sb7")
+
+[node name="wall_R" type="StaticBody2D" parent="."]
+position = Vector2(660, -143)
+physics_material_override = SubResource("PhysicsMaterial_fj7yv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_R"]
+position = Vector2(-10, 325)
+shape = SubResource("RectangleShape2D_f3sb7")
+
+[node name="basegui" type="RigidBody2D" parent="."]
+position = Vector2(22, 16)
+physics_material_override = SubResource("PhysicsMaterial_tlwt5")
+gravity_scale = 0.0
+inertia = 1000.0
+contact_monitor = true
+max_contacts_reported = 3
+linear_velocity = Vector2(50, 30)
+linear_damp_mode = 1
+script = ExtResource("1_fj7yv")
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="basegui"]
+texture_filter = 1
+texture = ExtResource("1_f3sb7")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="basegui"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_aqk2v")
+
+[connection signal="body_entered" from="basegui" to="basegui" method="_on_body_entered"]
