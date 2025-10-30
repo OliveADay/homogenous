@@ -1,8 +1,11 @@
 extends RigidBody2D
+var rng :RandomNumberGenerator = RandomNumberGenerator.new()
 
 
 
-func _on_body_entered(body: Node) -> void:
-	print(linear_velocity.y)
-	print(linear_velocity.x)
-	set_linear_velocity(Vector2(-linear_velocity.x, -linear_velocity.y*500000000))
+func _ready() -> void:
+	var x_lin = rng.randf_range(-1,1)
+	var y_lin = rng.randf_range(-1,1)
+	var lin =  Vector2(x_lin, y_lin)*100
+	set_linear_velocity(lin)
+	
