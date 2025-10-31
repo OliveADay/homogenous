@@ -10,6 +10,8 @@ const X_MAX = 625
 var gui_num = 2
 var guis = []
 var count = 0
+var scoreFilePath = "user://score.cfg"
+var best_score = 0
 
 func spawn():
 	for gui in guis:
@@ -19,6 +21,9 @@ func spawn():
 	if(gui_num > 2):
 		count+=1
 		$CanvasLayer/Label.text = "score: "+str(count)
+		if best_score < count:
+			saveBScore()
+			
 	while(i < gui_num):
 		i+=1
 		var pos = Vector2(rng.randi_range(X_MIN, X_MAX), rng.randi_range(Y_MIN,Y_MAX))
@@ -37,9 +42,24 @@ func spawn():
 	gui_num+=1
 			
 func _ready() -> void:
+	loadBScore()
 	spawn()
+	
+func saveBScore():
+	var config = ConfigFile.new()
+	best_score = count
+	config.set_value("main","best_score", best_score)
+	config.save(scoreFilePath)
 
-func _process_delta() -> void:
+func loadBScore():
+	var config = ConfigFile.new()
+	var error = config.load(scoreFilePath)
+	if error != OK:
+		best_score = 0
+		return
+	best_score = config.get_value("main","best_score")
+
+func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("escape")):
-		get_tree().reload_current_scene()	
+		get_tree().reload_current_scene()
 	

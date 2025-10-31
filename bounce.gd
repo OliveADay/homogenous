@@ -5,6 +5,7 @@ signal clicked_on
 
 
 
+
 func _ready() -> void:
 	var x_lin = rng.randf_range(-1,1)
 	var y_lin = rng.randf_range(-1,1)
@@ -15,10 +16,6 @@ func _process(delta: float) -> void:
 	if(Input.is_action_just_pressed("click") and mouse_in):
 		clicked_on.emit()
 	
-
-	
-
-
 func _on_mouse_entered() -> void:
 	mouse_in = true
 
