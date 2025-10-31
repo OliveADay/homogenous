@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfgcgilglokdo"]
+[gd_scene load_steps=5 format=3 uid="uid://bfgcgilglokdo"]
 
 [ext_resource type="Script" uid="uid://c6othc5sqtb8k" path="res://world.gd" id="1_aqk2v"]
-[ext_resource type="PackedScene" uid="uid://bwlt4wb68y030" path="res://basegui.tscn" id="1_tlwt5"]
-[ext_resource type="PackedScene" uid="uid://dyye3j74ovjx7" path="res://friend.tscn" id="2_fj7yv"]
+[ext_resource type="Theme" uid="uid://ciam2p050ynqd" path="res://world.tres" id="2_fj7yv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gv5m4"]
 size = Vector2(640, 20)
@@ -44,10 +43,14 @@ collision_mask = 3
 position = Vector2(-10, 325)
 shape = SubResource("RectangleShape2D_f3sb7")
 
-[node name="basegui" parent="." instance=ExtResource("1_tlwt5")]
-position = Vector2(15, 14)
-collision_layer = 2
-linear_velocity = Vector2(0, 0)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="friend" parent="." instance=ExtResource("2_fj7yv")]
-position = Vector2(101, 26)
+[node name="Label" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 253.0
+offset_top = 1.0
+offset_right = 351.0
+offset_bottom = 24.0
+theme = ExtResource("2_fj7yv")
+text = "score: 0"
+horizontal_alignment = 1

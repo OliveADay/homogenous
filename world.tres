@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ciam2p050ynqd"]
+
+[ext_resource type="FontFile" uid="uid://hro54snsjubc" path="res://04B_11_.TTF" id="1_dbpwn"]
+
+[resource]
+default_font = ExtResource("1_dbpwn")
