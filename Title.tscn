@@ -26,6 +26,17 @@ theme_override_font_sizes/font_size = 32
 text = "Find The Friend!!!!"
 metadata/_edit_use_anchors_ = true
 
+[node name="Label2" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 92.0
+offset_top = 199.0
+offset_right = 504.0
+offset_bottom = 231.0
+theme = ExtResource("1_c0dwi")
+theme_override_font_sizes/font_size = 32
+text = "do highscore stuff"
+metadata/_edit_use_anchors_ = true
+
 [node name="play" type="Button" parent="CanvasLayer"]
 texture_filter = 1
 offset_left = 255.0
