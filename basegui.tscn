@@ -12,6 +12,7 @@ size = Vector2(28, 28)
 
 [node name="basegui" type="RigidBody2D"]
 z_index = 1
+collision_layer = 2
 mass = 0.001
 physics_material_override = SubResource("PhysicsMaterial_tlwt5")
 gravity_scale = 0.0

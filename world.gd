@@ -38,5 +38,8 @@ func spawn():
 			
 func _ready() -> void:
 	spawn()
-			
+
+func _process_delta() -> void:
+	if (Input.is_action_just_pressed("escape")):
+		get_tree().reload_current_scene()	
 	

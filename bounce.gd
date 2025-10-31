@@ -12,7 +12,7 @@ func _ready() -> void:
 	set_linear_velocity(lin)
 	
 func _process(delta: float) -> void:
-	if(Input.is_action_just_pressed("click")):
+	if(Input.is_action_just_pressed("click") and mouse_in):
 		clicked_on.emit()
 	
 

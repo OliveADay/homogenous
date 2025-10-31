@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=3 uid="uid://ekqfj1dy3jdn"]
+
+[ext_resource type="Theme" uid="uid://ciam2p050ynqd" path="res://world.tres" id="1_c0dwi"]
+[ext_resource type="Script" uid="uid://d2txsdp3et8bc" path="res://title.gd" id="1_quvj1"]
+[ext_resource type="Texture2D" uid="uid://b57jwyndnc2v5" path="res://instructions.png" id="2_ax32a"]
+
+[node name="Title" type="Node2D"]
+script = ExtResource("1_quvj1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 100.0
+offset_top = 25.0
+offset_right = 512.0
+offset_bottom = 57.0
+theme = ExtResource("1_c0dwi")
+theme_override_font_sizes/font_size = 32
+text = "Find The Friend!!!!"
+metadata/_edit_use_anchors_ = true
+
+[node name="play" type="Button" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 255.0
+offset_top = 64.0
+offset_right = 359.0
+offset_bottom = 104.0
+theme = ExtResource("1_c0dwi")
+theme_override_font_sizes/font_size = 32
+text = "play"
+metadata/_edit_use_anchors_ = true
+
+[node name="instructions" type="Button" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 160.0
+offset_top = 107.0
+offset_right = 472.0
+offset_bottom = 147.0
+theme = ExtResource("1_c0dwi")
+theme_override_font_sizes/font_size = 32
+text = "instructions"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer2"]
+texture_filter = 1
+offset_right = 640.0
+offset_bottom = 54.0
+theme = ExtResource("1_c0dwi")
+theme_override_font_sizes/font_size = 28
+text = "find the friend(the one that isn't flipping you off) and click on them to get higher scores, see how far you can get! click 'esc' to come back to the menu"
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2"]
+texture_filter = 1
+offset_left = 158.99997
+offset_top = 39.999992
+offset_right = 222.99997
+offset_bottom = 103.99999
+scale = Vector2(5, 5)
+texture = ExtResource("2_ax32a")
+
+[node name="Button" type="Button" parent="CanvasLayer2"]
+texture_filter = 1
+offset_left = 8.0
+offset_top = 303.0
+offset_right = 72.0
+offset_bottom = 327.0
+theme = ExtResource("1_c0dwi")
+theme_override_font_sizes/font_size = 28
+text = "back"
+
+[connection signal="button_down" from="CanvasLayer/play" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="CanvasLayer/instructions" to="." method="_on_instructions_button_down"]
+[connection signal="button_down" from="CanvasLayer2/Button" to="." method="_on_button_button_down"]
